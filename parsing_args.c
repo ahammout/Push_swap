@@ -6,7 +6,7 @@
 /*   By: ahammout <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 12:11:24 by ahammout          #+#    #+#             */
-/*   Updated: 2022/05/09 16:20:14 by ahammout         ###   ########.fr       */
+/*   Updated: 2022/05/10 15:34:41 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ void	ft_duplicate(t_stack *stack_a)
 	}
 }
 
-void	ft_check_int(char **av, t_stack *stack_a)
+void	ft_check_numbers(char **av, t_stack *stack_a)
 {
 	int 	i;
 	int 	j;
 	long	r;
 
-	i = 1;
+	i = 0;
 	while(av[i])
 	{
 		r = ft_atoi(av[i]);
@@ -56,34 +56,56 @@ void	ft_check_int(char **av, t_stack *stack_a)
 	}
 }
 
-// int	*ft_fill_args(int ac, char **av)
-// {
-// 	int i;
-// 	int j;
+void	to_int(char **args, t_stack *stack_a)
+{
+	int i;
+	int t;
 
-// 	i =
-// }
+	i = 0;
+	t = 0;
+	while(args[t])
+		t++;
+	t--;      // For NULL;
+	stack_a->top = t;
+	while(t >= 0)
+	{
+		stack_a->arr[i] = ft_atoi(args[t]);
+		i++;
+		t--;
+	}
+	if(stack_a->top == -1)
+        exit(EXIT_FAILURE);
+}
+
+char	**ft_fill_args(char **av)
+{
+	char	*str;
+	char	**args;
+	int 	i;
+
+	i = 1;
+	str = (char *)malloc(sizeof(char));
+	while(av[i])
+	{
+		str = ft_strjoin(str, av[i]);
+		i++;
+	}
+	args = ft_split(str, ' ');
+	free(str);
+	return(args);
+}
 
 void    ft_parsing_args(int ac, char **av, t_stack *stack_a)
 {
-    int i;
-	//int **args
+	char	**args;
 
-    i = 1;
-	//args = ft_fill_args(ac, av);
 	stack_a->arr = malloc((ac - 1) * sizeof(int));
 	if (!stack_a->arr)
 		ft_exit_error(stack_a);
-    stack_a->top = -1;
-    while(ac > 1)
-    {
-		ft_check_int(av, stack_a);
-        stack_a->top++;
-        stack_a->arr[stack_a->top] = ft_atoi(av[i]);
-        i++;
-        ac--;
-    }
-    if(stack_a->top == -1)
-        exit(EXIT_FAILURE);
+	stack_a->top = -1;
+	args = ft_fill_args(av);
+	ft_check_numbers(args, stack_a);
+	to_int(args, stack_a);
+	free(args);
 	ft_duplicate(stack_a);
 }

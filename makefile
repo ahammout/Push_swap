@@ -6,7 +6,7 @@ LIB = push_swap.h
 
 NAME = push_swap
 
-SRCS = push_swap.c parsing_args.c utils.c 
+SRCS = push_swap.c parsing_args.c utils.c ft_split.c ft_strjoin.c ft_algo.c
 
 OBJS = $(SRCS:.c=.o)
 

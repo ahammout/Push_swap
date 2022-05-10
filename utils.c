@@ -19,6 +19,22 @@ void    ft_exit_error( t_stack *stack_a)
     exit(EXIT_FAILURE);
 }
 
+char	*ft_strchr(const char *s, int c)
+{
+	int				i;
+	unsigned char	*str;
+
+	i = 0;
+	str = (unsigned char *)s;
+	while (str[i] != (unsigned char)c)
+	{
+		if (str[i] == '\0')
+			return (0);
+		i++;
+	}
+	return ((char *) str + i);
+}
+
 long	ft_atoi(char *str)
 {
 	int		sign;

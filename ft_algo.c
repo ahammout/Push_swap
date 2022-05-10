@@ -6,8 +6,13 @@
 /*   By: ahammout <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 17:36:04 by ahammout          #+#    #+#             */
-/*   Updated: 2022/05/09 17:36:06 by ahammout         ###   ########.fr       */
+/*   Updated: 2022/05/10 19:33:29 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include"push_swap.h"
 
+void	ft_algo(t_stack *stack_a, t_stack *stack_b)
+{
+    
+}

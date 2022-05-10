@@ -16,16 +16,17 @@ int main(int ac, char **av)
 {
     int i;
     t_stack stack_a;
-    //t_stack stack_b;
+    t_stack stack_b;
 
     i = 0;
     ft_parsing_args(ac, av, &stack_a);
+    stack_b.arr = malloc()
 
-    while(i < ac - 1)
+    while(i <= stack_a.top)
     {
         printf("%d\n", stack_a.arr[i]);
         i++;
     }
-    //printf("top indice: %d\n", stack_a.top + 1);
+    printf("top indice: %d\n", stack_a.top + 1);
     return(0);
 }  

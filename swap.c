@@ -12,7 +12,12 @@
 
 #include"push_swap.h"
 
-void	swap_a(t_stack *stack_a, t_stack *stack_b)
+void	sa(t_stack *stack_a, t_stack *stack_b)
+{
+    int i;
+}
+
+void    sb(t_stack *stack_a, t_stack *stack_b)
 {
 
 }
