@@ -24,13 +24,22 @@ typedef struct s_stack
 
 }t_stack; 
 
+typedef struct s_stacks
+{
+    t_stack stack_a;
+    t_stack stack_b;
+    
+} t_stacks;
+
+
 long    ft_atoi(char *str);
 char    *ft_strchr(const char *s, int c);
 char	**ft_split(char const *s, char c);
 char	*ft_strjoin(char *s1, char *s2);
-void    ft_exit_error(t_stack *stack_a);
-void    ft_parsing_args(int ac, char **av, t_stack *stack_a);
-void	ft_algo(t_stack *stack_a, t_stack *stack_b);
+void    ft_exit_error(t_stacks *stacks, int num);
+void    ft_parsing_args(int ac, char **av, t_stacks *stacks);
+void	ft_push_swap(t_stacks *stacks);
+void	ft_swap_a(t_stacks *stacks);
 
 # endif
 

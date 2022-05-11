@@ -12,11 +12,23 @@
 
 #include"push_swap.h"
 
-void    ft_exit_error( t_stack *stack_a)
+void    ft_exit_error( t_stacks *stacks, int num)
 {
-	free(stack_a->arr);
-    write(2, "Error\n", 6);
-    exit(EXIT_FAILURE);
+	if(num == 1)
+	{
+		free(stacks->stack_a.arr);
+    	write(2, "Error\n", 6);
+		printf("stack_a free");
+    	exit(EXIT_FAILURE);
+	}
+	if (num == 2)
+	{
+		free(stacks->stack_a.arr);
+		free(stacks->stack_b.arr);
+		write(2, "Error\n", 6);
+		printf("stack_b & stack_a free");
+		exit(EXIT_FAILURE);
+	}
 }
 
 char	*ft_strchr(const char *s, int c)

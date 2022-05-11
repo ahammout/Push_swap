@@ -12,26 +12,47 @@
 
 #include"push_swap.h"
 
-void	ft_duplicate(t_stack *stack_a)
+void	ft_duplicate(t_stacks *stacks)
 {
 	int	i;
 	int j;
 
 	i = 0;
-	while (i < stack_a->top)
+	while (i < stacks->stack_a.top)
 	{
 		j = i + 1;
-		while(j <= stack_a->top)
+		while(j <= stacks->stack_a.top)
 		{
-			if(stack_a->arr[i] == stack_a->arr[j])
-				ft_exit_error(stack_a);
+			if(stacks->stack_a.arr[i] == stacks->stack_a.arr[j])
+				ft_exit_error(stacks, 1);
 			j++;
 		}
 		i++;
 	}
 }
 
-void	ft_check_numbers(char **av, t_stack *stack_a)
+void	to_int(char **args, t_stacks *stacks)
+{
+	int i;
+	int t;
+
+	i = 0;
+	t = 0;
+	while(args[t])
+		t++;
+	t--;      // For NULL;
+	stacks->stack_a.top = t;
+	while(t >= 0)
+	{
+		stacks->stack_a.arr[i] = ft_atoi(args[t]);
+		i++;
+		t--;
+	}
+	if(stacks->stack_a.top == -1)
+        exit(EXIT_FAILURE);
+}
+
+void	ft_check_numbers(char **av, t_stacks *stacks)
 {
 	int 	i;
 	int 	j;
@@ -42,39 +63,18 @@ void	ft_check_numbers(char **av, t_stack *stack_a)
 	{
 		r = ft_atoi(av[i]);
 		if(r > 2147483647 || r < -2147483648)
-			ft_exit_error(stack_a);
+			ft_exit_error(stacks, 1);
 		j = 0;
 		while(av[i][j])
 		{
 			if (av[i][j] == '-')
 				j++;
 			if (!(av[i][j] >= '0' && av[i][j] <= '9'))
-				ft_exit_error(stack_a);
+				ft_exit_error(stacks, 1);
 			j++;
 		}
 		i++;
 	}
-}
-
-void	to_int(char **args, t_stack *stack_a)
-{
-	int i;
-	int t;
-
-	i = 0;
-	t = 0;
-	while(args[t])
-		t++;
-	t--;      // For NULL;
-	stack_a->top = t;
-	while(t >= 0)
-	{
-		stack_a->arr[i] = ft_atoi(args[t]);
-		i++;
-		t--;
-	}
-	if(stack_a->top == -1)
-        exit(EXIT_FAILURE);
 }
 
 char	**ft_fill_args(char **av)
@@ -85,6 +85,8 @@ char	**ft_fill_args(char **av)
 
 	i = 1;
 	str = (char *)malloc(sizeof(char));
+	if (!str)
+		return(NULL);
 	while(av[i])
 	{
 		str = ft_strjoin(str, av[i]);
@@ -95,17 +97,17 @@ char	**ft_fill_args(char **av)
 	return(args);
 }
 
-void    ft_parsing_args(int ac, char **av, t_stack *stack_a)
+void    ft_parsing_args(int ac, char **av, t_stacks *stacks)
 {
 	char	**args;
 
-	stack_a->arr = malloc((ac - 1) * sizeof(int));
-	if (!stack_a->arr)
-		ft_exit_error(stack_a);
-	stack_a->top = -1;
+	stacks->stack_a.arr = malloc((ac - 1) * sizeof(int));
+	if (!stacks->stack_a.arr)
+		ft_exit_error(stacks, 1);
+	stacks->stack_a.top = -1;
 	args = ft_fill_args(av);
-	ft_check_numbers(args, stack_a);
-	to_int(args, stack_a);
+	ft_check_numbers(args, stacks);    
+ 	to_int(args, stacks);
 	free(args);
-	ft_duplicate(stack_a);
+	ft_duplicate(stacks);
 }

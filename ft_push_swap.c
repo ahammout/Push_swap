@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahammout <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/09 17:33:42 by ahammout          #+#    #+#             */
-/*   Updated: 2022/05/09 19:08:45 by ahammout         ###   ########.fr       */
+/*   Created: 2022/05/09 17:36:04 by ahammout          #+#    #+#             */
+/*   Updated: 2022/05/10 19:33:29 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-void	sa(t_stack *stack_a, t_stack *stack_b)
+void	ft_push_swap(t_stacks *stacks)
 {
-    int i;
-}
-
-void    sb(t_stack *stack_a, t_stack *stack_b)
-{
-
+    ft_swap_a(stacks);
 }
