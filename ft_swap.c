@@ -14,20 +14,35 @@
 
 void    ft_swap(int *n1, int *n2)
 {
-    int *tmp;
+    int tmp;
 
-    tmp = n1;
-    n1 = n2;
-    n2 = tmp;
+    tmp = *n1;
+    *n1 = *n2;
+    *n2 = tmp;
 
  }
 
-void	ft_swap_a(t_stacks *stacks)
+void	ft_swap_a_or_b(t_stacks *stacks, char *action)
 {
-    int index;
+    int top_a;
+    int top_b;
 
-    index = stacks->stack_a.top;
-    ft_swap(&stacks->stack_a.arr[index], &stacks->stack_a.arr[index - 1]);
+    top_a = stacks->stack_a.top;
+    top_b = stacks->stack_b.top;
+    if (ft_strcmp(action, "sa") == 0)
+    {
+        ft_swap(&stacks->stack_a.arr[top_a], &stacks->stack_a.arr[top_a - 1]);
+        write(1, "sa\n", 3);
+    }
+    if (ft_strcmp(action, "sb") == 0)
+    {
+        ft_swap(&stacks->stack_b.arr[top_b], &stacks->stack_b.arr[top_b - 1]);
+        write(1, "sb\n", 3);
+    }
+    if (ft_strcmp(action, "ss") == 0)
+    {
+        ft_swap(&stacks->stack_a.arr[top_a], &stacks->stack_a.arr[top_a - 1]);
+        ft_swap(&stacks->stack_b.arr[top_b], &stacks->stack_b.arr[top_b - 1]);
+        write(1, "ss\n", 3);
+    }
 }
-
-

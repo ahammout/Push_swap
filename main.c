@@ -15,19 +15,17 @@
 int main(int ac, char **av)
 {
     t_stacks stacks;
-    int i = 0;
+    int i;
 
     ft_parsing_args(ac, av, &stacks);
-    stacks.stack_b.top = -1;
-    stacks.stack_b.arr = malloc((ac - 1) * sizeof(int));
-    if (!stacks.stack_b.arr)
-        ft_exit_error(&stacks, 2);
-    ft_push_swap(&stacks);
+    ft_push_swap(&stacks, ac);
 
-    while(i <= stacks.stack_a.top)
+    i = stacks.stack_a.top;
+
+    while(i >= 0)
     {
-        printf("%d\n",stacks.stack_a.arr[i]);
-        i++;
+        printf("%d\n", stacks.stack_a.arr[i]);
+        i--;
     }
     printf("top indice: %d\n", stacks.stack_a.top);
     return(0);

@@ -12,7 +12,33 @@
 
 #include"push_swap.h"
 
-void	ft_push_swap(t_stacks *stacks)
+int    ft_issorted(t_stacks *stacks)
 {
-    ft_swap_a(stacks);
+    int top;
+
+    top = stacks->stack_a.top;
+    while (top > 0)
+    {
+        if (stacks->stack_a.arr[top] > stacks->stack_a.arr[top - 1])
+            return (1);
+        top--;
+    }
+    return (0);
+}
+
+void	ft_push_swap(t_stacks *stacks, int ac)
+{
+    stacks->stack_b.arr = malloc ((ac - 1) * sizeof(int));
+    if (!stacks->stack_b.arr)
+        ft_exit_error(stacks, 2);
+    stacks->stack_b.top = -1;
+
+    if (ft_issorted(stacks) == 0)
+         exit(1);
+    if (stacks->stack_a.top == 1)
+         ft_swap_a_or_b(stacks, "sa");
+    
+    ft_retate_a_or_b(stacks, "ra");
+    ft_reverse_retate_a_or_b(stacks, "rrr");
+    //ft_swap_a_or_b(stacks, "sa");
 }
