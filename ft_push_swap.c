@@ -12,7 +12,27 @@
 
 #include"push_swap.h"
 
-int    ft_issorted(t_stacks *stacks)
+int ft_find_largest_num(t_stacks *stacks)
+{
+    int i;
+    int max;
+    int index;
+
+    i = 0;
+    max = stacks->stack_a.arr[0];
+    while(i <= stacks->stack_a.top)
+    {
+        if (max < stacks->stack_a.arr[i])
+        {
+            max = stacks->stack_a.arr[i];
+            index = i;
+        }
+        i++;
+    }
+    return (index);
+}
+
+int ft_issorted(t_stacks *stacks)
 {
     int top;
 
@@ -20,25 +40,25 @@ int    ft_issorted(t_stacks *stacks)
     while (top > 0)
     {
         if (stacks->stack_a.arr[top] > stacks->stack_a.arr[top - 1])
-            return (1);
+            return (0);
         top--;
     }
-    return (0);
+    return (1);
 }
 
-void	ft_push_swap(t_stacks *stacks, int ac)
+void	ft_push_swap(t_stacks *stacks)
 {
-    stacks->stack_b.arr = malloc ((ac - 1) * sizeof(int));
+    stacks->stack_b.arr = malloc ((stacks->stack_a.top) * sizeof(int));
     if (!stacks->stack_b.arr)
         ft_exit_error(stacks, 2);
     stacks->stack_b.top = -1;
 
-    if (ft_issorted(stacks) == 0)
+    if (ft_issorted(stacks))
          exit(1);
     if (stacks->stack_a.top == 1)
          ft_swap_a_or_b(stacks, "sa");
-    
-    ft_retate_a_or_b(stacks, "ra");
-    ft_reverse_retate_a_or_b(stacks, "rrr");
-    //ft_swap_a_or_b(stacks, "sa");
+    if (stacks->stack_a.top == 2)
+        ft_sort_three_numbers(stacks);
+    if (stacks->stack_a.top < 5)
+        ft_sort_five_numbers(stacks);
 }

@@ -34,19 +34,22 @@ void	ft_duplicate(t_stacks *stacks)
 void	to_int(char **args, t_stacks *stacks)
 {
 	int i;
-	int t;
+	int size;
 
 	i = 0;
-	t = 0;
-	while(args[t])
-		t++;
-	t--;      // For NULL;
-	stacks->stack_a.top = t;
-	while(t >= 0)
+	size = 0;
+	while(args[size])
+		size++;
+	stacks->stack_a.arr = malloc((size) * sizeof(int));
+	if (!stacks->stack_a.arr)
+		ft_exit_error(stacks, 1);
+	size--;      // For NULL;
+	stacks->stack_a.top = size;
+	while(size >= 0)
 	{
-		stacks->stack_a.arr[i] = ft_atoi(args[t]);
+		stacks->stack_a.arr[i] = ft_atoi(args[size]);
 		i++;
-		t--;
+		size--;
 	}
 	if(stacks->stack_a.top == -1)
         exit(EXIT_FAILURE);
@@ -97,13 +100,10 @@ char	**ft_fill_args(char **av)
 	return(args);
 }
 
-void    ft_parsing_args(int ac, char **av, t_stacks *stacks)
+void    ft_parsing_args(char **av, t_stacks *stacks)
 {
 	char	**args;
 
-	stacks->stack_a.arr = malloc((ac - 1) * sizeof(int));
-	if (!stacks->stack_a.arr)
-		ft_exit_error(stacks, 1);
 	stacks->stack_a.top = -1;
 	args = ft_fill_args(av);
 	ft_check_numbers(args, stacks);    
