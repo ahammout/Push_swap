@@ -12,26 +12,6 @@
 
 #include"push_swap.h"
 
-int ft_find_largest_num(t_stacks *stacks)
-{
-    int i;
-    int max;
-    int index;
-
-    i = 0;
-    max = stacks->stack_a.arr[0];
-    while(i <= stacks->stack_a.top)
-    {
-        if (max < stacks->stack_a.arr[i])
-        {
-            max = stacks->stack_a.arr[i];
-            index = i;
-        }
-        i++;
-    }
-    return (index);
-}
-
 int ft_issorted(t_stacks *stacks)
 {
     int top;

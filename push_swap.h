@@ -46,7 +46,7 @@ void    ft_reverse_retate_a_or_b(t_stacks *stacks, char *action);
 void    ft_push_a_or_b(t_stacks *stacks, char *action);
 int     ft_issorted(t_stacks *stacks);
 void    ft_sort_three_numbers(t_stacks *stacks);
-int     ft_find_largest_num(t_stacks *stacks);
+int     ft_find_smallest_num(t_stacks *stacks);
 void    ft_sort_five_numbers(t_stacks *stacks);
 
 # endif

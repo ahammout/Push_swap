@@ -18,7 +18,7 @@ LIB = push_swap.h
 
 NAME = push_swap
 
-SRCS = main.c parsing_args.c utils.c ft_split.c ft_strjoin.c ft_push_swap.c ft_swap.c ft_retate.c ft_reverse_retate.c ft_push.c ft_sort_algo.c
+SRCS = main.c parsing_args.c utils.c ft_split.c ft_strjoin.c ft_push_swap.c ft_swap.c ft_retate.c ft_reverse_retate.c ft_push.c ft_sort_algo.c ft_sort_five_nbs.c
 
 OBJS = $(SRCS:.c=.o)
 

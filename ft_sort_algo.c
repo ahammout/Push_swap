@@ -12,38 +12,6 @@
 
 #include"push_swap.h"
 
-void    ft_large_up(t_stacks *stacks)
-{
-    int largest_index;
-
-    largest_index = ft_find_largest_num(stacks);
-    if(largest_index < 3)
-    {
-        while (largest_index >= 0)
-        {
-            ft_reverse_retate_a_or_b(stacks, "rra");
-            largest_index--;
-        }
-    }
-    else
-    {
-        while (largest_index < stacks->stack_a.top)
-        {
-            ft_retate_a_or_b(stacks, "ra");
-            largest_index++;
-        }
-    }
-}
-
-void    ft_sort_five_numbers(t_stacks *stacks)
-{
-    int i;
-
-    i = 0;
-    ft_large_up(stacks);
-    
-}
-
 void    ft_sort_three_numbers(t_stacks *stacks)
 {
     int *tmp;
