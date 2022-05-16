@@ -41,4 +41,6 @@ void	ft_push_swap(t_stacks *stacks)
         ft_sort_three_numbers(stacks);
     if (stacks->stack_a.top < 5)
         ft_sort_five_numbers(stacks);
+    if (stacks->stack_a.top >= 5)
+        ft_sort_algo(stacks);
 }
