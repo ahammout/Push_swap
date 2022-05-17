@@ -63,7 +63,7 @@ void    ft_sort_algo(t_stacks *stacks)
         mid_value = ft_get_mid_number(stacks);
         i++;
         printf("MID VALUE FOR CHUNK[%d]===>:%d\n",i , mid_value);
-        while (top > 0)
+        while (top >= 0)
         {
             if (stacks->stack_a.arr[stacks->stack_a.top] < mid_value)
                 ft_push_a_or_b(stacks, "pb");

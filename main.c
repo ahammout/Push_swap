@@ -29,6 +29,7 @@ int main(int ac, char **av)
         i--;
     }
     printf("ALL THE ACTIONS ==> %d\n", stacks.action);
+    check_l
     //printf("stack_b[1]==> %d\nstack_b[0]==>%d\n ", stacks.stack_b.arr[1], stacks.stack_b.arr[0]);
     return(0);
 }

@@ -91,13 +91,14 @@ char	**ft_fill_args(int ac, char **av)
 	str = (char *)malloc(sizeof(char));
 	if (!str)
 		return(NULL);
-	printf("str %s\n", str);
 	printf("ac %d\n", ac);
 	while(i < ac)
 	{
 		str = ft_strjoin(str, av[i]);
+		printf("str %s\n", str);
 		i++;
 	}
+	args = (char **)malloc(sizeof(char *) * i);
 	args = ft_split(str, ' ');
 	free(str);
 	return(args);
