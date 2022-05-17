@@ -33,16 +33,19 @@ void	ft_swap_a_or_b(t_stacks *stacks, char *action)
     {
         ft_swap(&stacks->stack_a.arr[top_a], &stacks->stack_a.arr[top_a - 1]);
         write(1, "sa\n", 3);
+        stacks->action++;
     }
     if (ft_strcmp(action, "sb") == 0)
     {
         ft_swap(&stacks->stack_b.arr[top_b], &stacks->stack_b.arr[top_b - 1]);
         write(1, "sb\n", 3);
+        stacks->action++;
     }
     if (ft_strcmp(action, "ss") == 0)
     {
         ft_swap(&stacks->stack_a.arr[top_a], &stacks->stack_a.arr[top_a - 1]);
         ft_swap(&stacks->stack_b.arr[top_b], &stacks->stack_b.arr[top_b - 1]);
         write(1, "ss\n", 3);
+        stacks->action++;
     }
 }

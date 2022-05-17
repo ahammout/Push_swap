@@ -39,10 +39,12 @@ void    ft_push_a_or_b(t_stacks *stacks, char *action)
     {
         ft_push(stacks, 'a');
         write(1, "pa\n", 3);
+        stacks->action++;
     }
     if (ft_strcmp(action, "pb") == 0)
     {
         ft_push(stacks, 'b');
         write(1, "pb\n", 3);
+        stacks->action++;
     }
 }

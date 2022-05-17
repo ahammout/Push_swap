@@ -18,7 +18,8 @@ int main(int ac, char **av)
     int i;
 
     (void) ac;
-    ft_parsing_args(av, &stacks);
+    stacks.action = 0;
+    ft_parsing_args(ac, av, &stacks);
     ft_push_swap(&stacks);
 
     i = stacks.stack_a.top;
@@ -27,6 +28,7 @@ int main(int ac, char **av)
         printf("%d\n", stacks.stack_a.arr[i]);
         i--;
     }
+    printf("ALL THE ACTIONS ==> %d\n", stacks.action);
     //printf("stack_b[1]==> %d\nstack_b[0]==>%d\n ", stacks.stack_b.arr[1], stacks.stack_b.arr[0]);
     return(0);
 }

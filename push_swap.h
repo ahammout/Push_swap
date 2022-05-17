@@ -28,6 +28,7 @@ typedef struct s_stacks
 {
     t_stack stack_a;
     t_stack stack_b;
+    int action;
     
 } t_stacks;
 
@@ -38,7 +39,7 @@ char	**ft_split(char const *s, char c);
 char	*ft_strjoin(char *s1, char *s2);
 int	    ft_strcmp(char *s1, char *s2);
 void    ft_exit_error(t_stacks *stacks, int num);
-void    ft_parsing_args(char **av, t_stacks *stacks);
+void    ft_parsing_args(int ac, char **av, t_stacks *stacks);
 void	ft_push_swap(t_stacks *stacks);
 void	ft_swap_a_or_b(t_stacks *stacks, char *str);
 void    ft_retate_a_or_b(t_stacks *stacks, char *action);

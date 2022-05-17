@@ -54,7 +54,7 @@ void	to_int(char **args, t_stacks *stacks)
 	if(stacks->stack_a.top == -1)
         exit(EXIT_FAILURE);
 }
-
+// fixing bug here 2 
 void	ft_check_numbers(char **av, t_stacks *stacks)
 {
 	int 	i;
@@ -65,6 +65,7 @@ void	ft_check_numbers(char **av, t_stacks *stacks)
 	while(av[i])
 	{
 		r = ft_atoi(av[i]);
+		printf("ARG N[%d]%s\n", i, av[i]);
 		if(r > 2147483647 || r < -2147483648)
 			ft_exit_error(stacks, 1);
 		j = 0;
@@ -79,8 +80,8 @@ void	ft_check_numbers(char **av, t_stacks *stacks)
 		i++;
 	}
 }
-
-char	**ft_fill_args(char **av)
+// fixing bug here 1
+char	**ft_fill_args(int ac, char **av)
 {
 	char	*str;
 	char	**args;
@@ -90,7 +91,9 @@ char	**ft_fill_args(char **av)
 	str = (char *)malloc(sizeof(char));
 	if (!str)
 		return(NULL);
-	while(av[i])
+	printf("str %s\n", str);
+	printf("ac %d\n", ac);
+	while(i < ac)
 	{
 		str = ft_strjoin(str, av[i]);
 		i++;
@@ -100,13 +103,13 @@ char	**ft_fill_args(char **av)
 	return(args);
 }
 
-void    ft_parsing_args(char **av, t_stacks *stacks)
+void    ft_parsing_args(int ac, char **av, t_stacks *stacks)
 {
 	char	**args;
 
 	stacks->stack_a.top = -1;
-	args = ft_fill_args(av);
-	ft_check_numbers(args, stacks);    
+	args = ft_fill_args(ac, av);
+	ft_check_numbers(args, stacks);
  	to_int(args, stacks);
 	free(args);
 	ft_duplicate(stacks);

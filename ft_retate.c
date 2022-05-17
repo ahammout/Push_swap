@@ -37,16 +37,19 @@ void    ft_retate_a_or_b(t_stacks *stacks, char *action)
     {
         ft_shift_up(&stacks->stack_a, stacks->stack_a.top, top_a);
         write(1, "ra\n", 3);
+        stacks->action++;
     }
     if (ft_strcmp(action, "rb") == 0)
     {
         ft_shift_up(&stacks->stack_b, stacks->stack_b.top, top_b);
         write(1, "rb\n", 3);
+        stacks->action++;
     }
     if (ft_strcmp(action, "rr") == 0)
     {
         ft_shift_up(&stacks->stack_a, stacks->stack_a.top, top_a);
         ft_shift_up(&stacks->stack_b, stacks->stack_b.top, top_b);
         write(1, "rr\n", 3);
+        stacks->action++;
     }
 }

@@ -55,25 +55,29 @@ void    ft_sort_algo(t_stacks *stacks)
     int top;
     int i;
 
-    mid_value = ft_get_mid_number(stacks);
     i = 0;
-    top = stacks->stack_a.top;
-    printf("mid value ===>:%d\n", mid_value);
+    top = stacks->stack_a.top / 2;
     // look for less than mid value
-    while (top >= 0)
+    while (1)
     {
-        if (stacks->stack_a.arr[top] < mid_value)
-        {   
-            ft_push_a_or_b(stacks, "pb");
-        }
-        if (stacks->stack_a.arr[top] > mid_value)
+        mid_value = ft_get_mid_number(stacks);
+        i++;
+        printf("MID VALUE FOR CHUNK[%d]===>:%d\n",i , mid_value);
+        while (top > 0)
         {
-            printf("Retate this one ==> %d ", stacks->stack_a.arr[top]);
-            ft_retate_a_or_b(stacks, "ra");
+            if (stacks->stack_a.arr[stacks->stack_a.top] < mid_value)
+                ft_push_a_or_b(stacks, "pb");
+            else
+                ft_retate_a_or_b(stacks, "ra");
+            top--;
         }
-        top--;
+        top = stacks->stack_a.top / 2;
+        if (stacks->stack_a.top == 2 && ft_issorted(stacks) == 0)
+            ft_sort_three_numbers(stacks);
+        if (stacks->stack_a.top == 2)
+            break;
     }
-
+    i = 0;
     while (i <= stacks->stack_b.top)
     {
         printf("stack_b ===> %d\n", stacks->stack_b.arr[i]);
