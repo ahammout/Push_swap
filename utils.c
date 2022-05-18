@@ -14,6 +14,11 @@
 
 void    ft_exit_error( t_stacks *stacks, int num)
 {
+	if (num == 0)
+	{
+		write(2, "Error\n", 6);
+		exit(EXIT_FAILURE);
+	}
 	if(num == 1)
 	{
 		free(stacks->stack_a.arr);

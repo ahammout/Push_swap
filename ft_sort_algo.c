@@ -12,15 +12,71 @@
 
 #include"push_swap.h"
 
+int ft_find_largest_num(t_stacks *stacks)
+{
+    int i;
+    int max;
+    int index;
+
+    i = 1;
+    max = stacks->stack_b.arr[0];
+    printf("Sup max ====> %d", stacks->stack_b.arr[0]);
+    index = 0;
+    while(i <= stacks->stack_b.top)
+    {
+        if (max < stacks->stack_b.arr[i])
+        {
+            max = stacks->stack_b.arr[i];
+            index = i;
+        }
+        i++;
+    }
+    printf("Large ++++>%d\n", max);
+    return(index);
+}
+
+void    ft_transfer_stack_b(t_stacks *stacks)
+{
+    int largest_index;
+
+    while (1)
+    {
+        largest_index = ft_find_largest_num(stacks);
+        if (largest_index < stacks->stack_b.top / 2)
+        {
+            while (largest_index >= 0)
+            {
+                ft_reverse_retate_a_or_b(stacks, "rrb");
+                if(largest_index == 0)
+                    ft_push_a_or_b(stacks, "pa");
+                largest_index--;
+            }
+        }
+        else
+        {
+            while (largest_index <= stacks->stack_b.top)
+            {
+                ft_retate_a_or_b(stacks, "rb");
+                if (largest_index == stacks->stack_b.top)
+                    ft_push_a_or_b(stacks, "pa");
+                largest_index++;
+            }
+        }
+        //printf("TOP  =======> %d\n",stacks->stack_b.top);
+        if (stacks->stack_b.top == -1)
+            break;
+    }
+    
+}
+
 static int ft_get_mid_number(t_stacks *stacks)
 {
-    int *arr;
+    int arr[stacks->stack_a.top];
     int tmp;
     int mid_val;
     int i;
     int j;
 
-    arr = malloc(stacks->stack_a.top * sizeof(int));
     i = 0;
     while (i <= stacks->stack_a.top)
     {
@@ -45,7 +101,6 @@ static int ft_get_mid_number(t_stacks *stacks)
     }
     j = (stacks->stack_a.top + 1) / 2;
     mid_val = arr[j];
-    free(arr);
     return (mid_val);
 }
 
@@ -63,7 +118,7 @@ void    ft_sort_algo(t_stacks *stacks)
         mid_value = ft_get_mid_number(stacks);
         i++;
         printf("MID VALUE FOR CHUNK[%d]===>:%d\n",i , mid_value);
-        while (top >= 0)
+        while (top > 0)
         {
             if (stacks->stack_a.arr[stacks->stack_a.top] < mid_value)
                 ft_push_a_or_b(stacks, "pb");
@@ -72,17 +127,20 @@ void    ft_sort_algo(t_stacks *stacks)
             top--;
         }
         top = stacks->stack_a.top / 2;
-        if (stacks->stack_a.top == 2 && ft_issorted(stacks) == 0)
-            ft_sort_three_numbers(stacks);
         if (stacks->stack_a.top == 2)
+        {
+            ft_sort_three_numbers(stacks);
+            ft_transfer_stack_b(stacks);
+            //printf("LARGEST ONE ON STACK_B ====> %d\n", stacks->stack_b.arr[top]);
             break;
+        }
     }
-    i = 0;
-    while (i <= stacks->stack_b.top)
-    {
-        printf("stack_b ===> %d\n", stacks->stack_b.arr[i]);
-        i++;
-    }
+    // i = stacks->stack_b.top;
+    // while (i >= 0)
+    // {
+    //     printf("stack_b ===> %d\n", stacks->stack_b.arr[i]);
+    //     i--;
+    // }
 }
 
 void    ft_sort_three_numbers(t_stacks *stacks)

@@ -54,29 +54,28 @@ void	to_int(char **args, t_stacks *stacks)
 	if(stacks->stack_a.top == -1)
         exit(EXIT_FAILURE);
 }
-// fixing bug here 2 
-void	ft_check_numbers(char **av, t_stacks *stacks)
+// fixing bug here 2
+void	ft_check_args(char **args)
 {
 	int 	i;
 	int 	j;
 	long	r;
 
 	i = 0;
-	while(av[i])
+	while(args[i])
 	{
-		r = ft_atoi(av[i]);
-		printf("ARG N[%d]%s\n", i, av[i]);
-		if(r > 2147483647 || r < -2147483648)
-			ft_exit_error(stacks, 1);
 		j = 0;
-		while(av[i][j])
+		while(args[i][j])
 		{
-			if (av[i][j] == '-')
+			if (args[i][j] == '-')
 				j++;
-			if (!(av[i][j] >= '0' && av[i][j] <= '9'))
-				ft_exit_error(stacks, 1);
+			if (!(args[i][j] >= '0' && args[i][j] <= '9'))
+				ft_exit_error(NULL, 0);
 			j++;
 		}
+		r = ft_atoi(args[i]);
+		if(r > 2147483647 || r < -2147483648)
+			ft_exit_error(NULL, 0);
 		i++;
 	}
 }
@@ -91,11 +90,9 @@ char	**ft_fill_args(int ac, char **av)
 	str = (char *)malloc(sizeof(char));
 	if (!str)
 		return(NULL);
-	printf("ac %d\n", ac);
 	while(i < ac)
 	{
 		str = ft_strjoin(str, av[i]);
-		printf("str %s\n", str);
 		i++;
 	}
 	args = (char **)malloc(sizeof(char *) * i);
@@ -110,7 +107,7 @@ void    ft_parsing_args(int ac, char **av, t_stacks *stacks)
 
 	stacks->stack_a.top = -1;
 	args = ft_fill_args(ac, av);
-	ft_check_numbers(args, stacks);
+	ft_check_args(args);
  	to_int(args, stacks);
 	free(args);
 	ft_duplicate(stacks);

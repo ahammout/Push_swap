@@ -20,6 +20,7 @@ int ft_find_smallest_num(t_stacks *stacks)
 
     i = 0;
     min = stacks->stack_a.arr[0];
+    index = 0;
     while(i <= stacks->stack_a.top)
     {
         if (min > stacks->stack_a.arr[i])
@@ -35,9 +36,7 @@ int ft_find_smallest_num(t_stacks *stacks)
 void    ft_small_up(t_stacks *stacks)
 {
     int smallest_index;
-    int top;
     
-    top = stacks->stack_a.top;
     smallest_index = ft_find_smallest_num(stacks);
     if(smallest_index < 3)
     {
