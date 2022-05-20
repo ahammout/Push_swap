@@ -35,7 +35,7 @@ int ft_find_largest_num(t_stacks *stacks)
 
 void    ft_transfer_stack_b(t_stacks *stacks)
 {
-    int largest_index;
+    int large_one;
     int count;
     int step;
 
@@ -43,12 +43,12 @@ void    ft_transfer_stack_b(t_stacks *stacks)
     step = 0;
     while (1)
     {
-        largest_index = ft_find_largest_num(stacks);
-        while (largest_index < stacks->stack_b.top)
+        large_one = ft_find_largest_num(stacks);
+        while (large_one < stacks->stack_b.top)
         {
             ft_retate_a_or_b(stacks, "rb");
             step++;
-            largest_index++;
+            large_one++;
             count++;
         }
         ft_push_a_or_b(stacks, "pa");
@@ -66,7 +66,22 @@ void    ft_transfer_stack_b(t_stacks *stacks)
     }
 }
     
+static int ft_under_mid_exist(t_stacks *stacks, int mid_value)
+{
+    int i;
 
+    i = 0;
+    while(i <= stacks->stack_a.top)
+    {
+        if(stacks->stack_a.arr[i] < mid_value)
+        {
+            printf("Is exist\n");
+            return(1);
+        }
+        i++;
+    }
+    return(0);
+}
 
 static int ft_get_mid_number(t_stacks *stacks)
 {
@@ -81,7 +96,7 @@ static int ft_get_mid_number(t_stacks *stacks)
         i++;
     }
     ft_sort_arr(stacks, arr);
-    i = (stacks->stack_a.top + 1) / 2;
+    i = (stacks->stack_a.top + 1) / 3;
     mid_val = arr[i];
     return (mid_val);
 }
@@ -90,16 +105,20 @@ void    ft_sort_algo(t_stacks *stacks)
 {
     int mid_value;
     int top;
+    int i;
 
+    i = 0;
     while (1)
     {
         top = stacks->stack_a.top;
         mid_value = ft_get_mid_number(stacks);
+        i++;
+        printf("CHUNK[%d] Under [ %d ]\n\n", i, mid_value);
         while (top > 0)
         {
             if (stacks->stack_a.arr[stacks->stack_a.top] < mid_value)
                 ft_push_a_or_b(stacks, "pb");
-            else
+            else if (ft_under_mid_exist(stacks, mid_value) == 1)
                 ft_retate_a_or_b(stacks, "ra");
             top--;
         }

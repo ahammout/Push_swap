@@ -23,11 +23,11 @@ int main(int ac, char **av)
     ft_push_swap(&stacks);
 
     i = stacks.stack_a.top;
-    while(i >= 0)
-    {
-        printf("%d\n", stacks.stack_a.arr[i]);
-        i--;
-    }
+    // while(i >= 0)
+    // {
+    //     printf("%d\n", stacks.stack_a.arr[i]);
+    //     i--;
+    // }
     printf("ALL THE ACTIONS ==> %d\n", stacks.action);
     //printf("stack_b[1]==> %d\nstack_b[0]==>%d\n ", stacks.stack_b.arr[1], stacks.stack_b.arr[0]);
     return(0);
