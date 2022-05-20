@@ -85,3 +85,28 @@ long	ft_atoi(char *str)
 	}
 	return (num * sign);
 }
+
+void	ft_sort_arr(t_stacks *stacks, int *arr)
+{
+	int i;
+	int j;
+	int tmp;
+
+	i = 0;
+	j = 0;
+	while(i <= stacks->stack_a.top)
+    {
+        j = i + 1;
+        while (j <= stacks->stack_a.top)
+        {
+            if (arr[i] > arr[j])
+            {
+                tmp = arr[j];
+                arr[j] = arr[i];
+                arr[i] = tmp;
+            }
+            j++;
+        }
+        i++;
+    }
+}

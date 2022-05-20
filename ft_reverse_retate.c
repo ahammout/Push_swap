@@ -44,14 +44,14 @@ void    ft_reverse_retate_a_or_b(t_stacks *stacks, char *action)
     }
     if (ft_strcmp(action, "rrb") == 0)
     {
-        ft_shift_down(&stacks->stack_b, stacks->stack_a.top, bottom_b);
+        ft_shift_down(&stacks->stack_b, stacks->stack_b.top, bottom_b);
         write(1, "rrb\n", 4);
         stacks->action++;
     }
     if (ft_strcmp(action, "rrr") == 0)
     {
         ft_shift_down(&stacks->stack_a, stacks->stack_a.top, bottom_a);
-        ft_shift_down(&stacks->stack_b, stacks->stack_a.top, bottom_b);
+        ft_shift_down(&stacks->stack_b, stacks->stack_b.top, bottom_b);
         write(1, "rrr\n", 4);
         stacks->action++;
     }

@@ -49,6 +49,7 @@ int     ft_issorted(t_stacks *stacks);
 void    ft_sort_three_numbers(t_stacks *stacks);
 int     ft_find_smallest_num(t_stacks *stacks);
 void    ft_sort_five_numbers(t_stacks *stacks);
+void	ft_sort_arr(t_stacks *stacks, int *arr);
 void    ft_sort_algo(t_stacks *stacks);
 
 
