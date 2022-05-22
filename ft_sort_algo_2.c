@@ -39,14 +39,15 @@ static int ft_get_mid_number(t_stacks *stacks)
     return (mid_val);
 }
 
-void    ft_sort_a(t_stacks *stacks)
-{
-    int 
-}
-
 void    ft_sort_b(t_stacks *stacks)
 {
 
+}
+
+
+void    ft_sort_a(t_stacks *stacks)
+{
+    int 
 }
 
 void    ft_sort_algo(t_stacks *stacks)
