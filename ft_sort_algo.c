@@ -66,34 +66,16 @@ void    ft_transfer_stack_b(t_stacks *stacks)
     }
 }
     
-// static int ft_under_mid_exist(t_stacks *stacks, int mid_value)
-// {
-//     int i;
-
-//     i = 0;
-//     while(i <= stacks->stack_a.top)
-//     {
-//         if(stacks->stack_a.arr[i] < mid_value)
-//         {
-//             printf("Is exist\n");
-//             return(1);
-//         }
-//         i++;
-//     }
-//     return(0);
-// }
-
-static int get_index(t_stacks *stacks, int mid_val)
+static int ft_under_mid_exist(t_stacks *stacks, int mid_value)
 {
     int i;
 
     i = 0;
-    while (i <= stacks->stack_a.top)
+    while(i <= stacks->stack_a.top)
     {
-        if (stacks->stack_a.arr[i] < mid_val)
+        if(stacks->stack_a.arr[i] < mid_value)
         {
-            //printf("Mid Value+++++++>> %d\n", mid_val);
-            return (i);
+            return(1);
         }
         i++;
     }
@@ -113,52 +95,39 @@ static int mid_num(t_stacks *stacks)
         i++;
     }
     ft_sort_arr(stacks, arr);
-    i = (stacks->stack_a.top + 1) / 5;
+    i = (stacks->stack_a.top + 1) / 2;
     mid_val = arr[i];
     return (mid_val);
 }
 
 void    ft_sort_algo(t_stacks *stacks)
 {
-    int index;
-    //int top;
+    int mid_value;
+    int top;
     int i;
 
     i = 0;
     while (1)
     {
-        index = get_index(stacks, mid_num(stacks));
-        if (index < stacks->stack_a.top + 1 / 2)
+        mid_value = mid_num(stacks);
+        printf("MID VALUE====> %d\n", mid_value);
+        top = stacks->stack_a.top;
+        while (1)
         {
-            while (index >= 0)
+            if (stacks->stack_a.arr[stacks->stack_a.top] < mid_value)
+                ft_push_a_or_b(stacks, "pb");
+            else
+                ft_retate_a_or_b(stacks, "ra");
+            if (ft_under_mid_exist(stacks, mid_value) == 0)
             {
-                ft_reverse_retate_a_or_b(stacks, "rra");
-                index--;
+                printf("HERE ====\n");
+                break;
             }
-            ft_push_a_or_b(stacks, "pb");
         }
-        else if (index >= stacks->stack_a.top + 1 / 2)
+        if (stacks->stack_a.top == 1)
         {
-            while (index <= stacks->stack_a.top)
-            {
-                ft_retate_a_or_b(stacks ,"ra");
-                index++;
-            }
-            ft_push_a_or_b(stacks, "pb");
-        }
-        // while (top > 0)
-        // {
-        //     if (stacks->stack_a.arr[stacks->stack_a.top] < mid_value)
-        //         ft_push_a_or_b(stacks, "pb");
-        //     else
-        //         ft_retate_a_or_b(stacks, "ra");
-        //     if (ft_under_mid_exist(stacks, mid_value) == 0)
-        //         break;
-        //     top--;
-        // }
-        if (stacks->stack_a.top == 4)
-        {
-            ft_sort_five_numbers(stacks);
+            if (ft_issorted(stacks) == 0)
+                ft_swap_a_or_b(stacks, "sa");
             ft_transfer_stack_b(stacks);
             printf("HERE WE GO\n");
             break;
