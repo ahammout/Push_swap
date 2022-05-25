@@ -36,27 +36,26 @@ int ft_find_largest_num(t_stacks *stacks)
 void    ft_transfer_stack_b(t_stacks *stacks)
 {
     int large_one;
-    int count;
     int step;
 
-    count = 0;
     step = 0;
     while (1)
     {
         large_one = ft_find_largest_num(stacks);
-        while (large_one < stacks->stack_b.top)
+        if (large_one > stacks->stack_b.top / 2)
         {
             ft_retate_a_or_b(stacks, "rb");
             step++;
-            large_one++;
-            count++;
         }
-        ft_push_a_or_b(stacks, "pa");
-        while (count > 0)
+        if (large_one < stacks->stack_b.top / 2)
         {
-            ft_reverse_retate_a_or_b(stacks, "rrb");
+            ft_retate_a_or_b(stacks, "rrb");
             step++;
-            count--;
+        }
+        if (large_one == stacks->stack_b.top)
+        {
+            ft_push_a_or_b(stacks, "pa");
+            step++;
         }
         if (stacks->stack_b.top == -1)
         {
