@@ -12,7 +12,7 @@
 
 #include"push_swap.h"
 
-int ft_find_smallest_num(t_stacks *stacks)
+int find_smallest_num(t_stacks *stacks)
 {
     int i;
     int min;
@@ -33,16 +33,16 @@ int ft_find_smallest_num(t_stacks *stacks)
     return (index);
 }
 
-void    ft_small_up(t_stacks *stacks)
+void    small_up(t_stacks *stacks)
 {
     int smallest_index;
     
-    smallest_index = ft_find_smallest_num(stacks);
+    smallest_index = find_smallest_num(stacks);
     if(smallest_index < 3)
     {
         while (smallest_index >= 0)
         {
-            ft_reverse_retate_a_or_b(stacks, "rra");
+            reverse_retate_a_or_b(stacks, "rra");
             smallest_index--;
         }
     }
@@ -50,33 +50,33 @@ void    ft_small_up(t_stacks *stacks)
     {
         while (smallest_index < stacks->stack_a.top)
         {
-            ft_retate_a_or_b(stacks, "ra");
+            retate_a_or_b(stacks, "ra");
             smallest_index++;
         }
     }
 }
 
-void    ft_sort_five_numbers(t_stacks *stacks)
+void    sort_five_numbers(t_stacks *stacks)
 {
     int i;
 
     i = 0;
     if (stacks->stack_a.top == 4)
     {
-        ft_small_up(stacks);
-        ft_push_a_or_b(stacks, "pb");
+        small_up(stacks);
+        push_a_or_b(stacks, "pb");
         i++;
     }
     if (stacks->stack_a.top == 3)
     {
-        ft_small_up(stacks);
-        ft_push_a_or_b(stacks, "pb");
+        small_up(stacks);
+        push_a_or_b(stacks, "pb");
         i++;
     }
-    ft_sort_three_numbers(stacks);
+    sort_three_numbers(stacks);
     while(i > 0)
     {
-        ft_push_a_or_b(stacks, "pa");
+        push_a_or_b(stacks, "pa");
         i--;
     }
 }

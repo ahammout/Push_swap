@@ -12,7 +12,7 @@
 
 #include"push_swap.h"
 
-void    ft_exit_error( t_stacks *stacks, int num)
+void    exit_error( t_stacks *stacks, int num)
 {
 	if (num == 0)
 	{
@@ -23,7 +23,6 @@ void    ft_exit_error( t_stacks *stacks, int num)
 	{
 		free(stacks->stack_a.arr);
     	write(2, "Error\n", 6);
-		printf("stack_a free");
     	exit(EXIT_FAILURE);
 	}
 	if (num == 2)
@@ -31,7 +30,6 @@ void    ft_exit_error( t_stacks *stacks, int num)
 		free(stacks->stack_a.arr);
 		free(stacks->stack_b.arr);
 		write(2, "Error\n", 6);
-		printf("stack_b & stack_a free");
 		exit(EXIT_FAILURE);
 	}
 }
@@ -86,7 +84,7 @@ long	ft_atoi(char *str)
 	return (num * sign);
 }
 
-void	ft_sort_arr(t_stacks *stacks, int *arr)
+void	sort_arr(t_stacks *stacks, int *arr)
 {
 	int i;
 	int j;

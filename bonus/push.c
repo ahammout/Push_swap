@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"push_swap.h"
+#include"checker.h"
 
-void    ft_push(t_stacks *stacks, char stack)
+void    push(t_stacks *stacks, char stack)
 {
     int top_a;
     int top_b;
@@ -33,18 +33,16 @@ void    ft_push(t_stacks *stacks, char stack)
     }
 }
 
-void    ft_push_a_or_b(t_stacks *stacks, char *action)
+void    push_a_or_b(t_stacks *stacks, char *action)
 {
     if (ft_strcmp(action, "pa") == 0)
     {
-        ft_push(stacks, 'a');
-        write(1, "pa\n", 3);
+        push(stacks, 'a');
         stacks->action++;
     }
     if (ft_strcmp(action, "pb") == 0)
     {
-        ft_push(stacks, 'b');
-        write(1, "pb\n", 3);
+        push(stacks, 'b');
         stacks->action++;
     }
 }

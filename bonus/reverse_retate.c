@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"push_swap.h"
+#include"checker.h"
 
-void    ft_shift_down(t_stack *stack, int top, int bottom_tmp)
+void    shift_down(t_stack *stack, int top, int bottom_tmp)
 {
     int i;
 
@@ -29,7 +29,7 @@ void    ft_shift_down(t_stack *stack, int top, int bottom_tmp)
     }
 }
 
-void    ft_reverse_retate_a_or_b(t_stacks *stacks, char *action)
+void    reverse_retate_a_or_b(t_stacks *stacks, char *action)
 {
     int bottom_a;
     int bottom_b;
@@ -38,21 +38,18 @@ void    ft_reverse_retate_a_or_b(t_stacks *stacks, char *action)
     bottom_b = stacks->stack_b.arr[0];
     if (ft_strcmp(action, "rra") == 0)
     {
-        ft_shift_down(&stacks->stack_a, stacks->stack_a.top, bottom_a);
-        write(1, "rra\n", 4);
+        shift_down(&stacks->stack_a, stacks->stack_a.top, bottom_a);
         stacks->action++;
     }
     if (ft_strcmp(action, "rrb") == 0)
     {
-        ft_shift_down(&stacks->stack_b, stacks->stack_b.top, bottom_b);
-        write(1, "rrb\n", 4);
+        shift_down(&stacks->stack_b, stacks->stack_b.top, bottom_b);
         stacks->action++;
     }
     if (ft_strcmp(action, "rrr") == 0)
     {
-        ft_shift_down(&stacks->stack_a, stacks->stack_a.top, bottom_a);
-        ft_shift_down(&stacks->stack_b, stacks->stack_b.top, bottom_b);
-        write(1, "rrr\n", 4);
+        shift_down(&stacks->stack_a, stacks->stack_a.top, bottom_a);
+        shift_down(&stacks->stack_b, stacks->stack_b.top, bottom_b);
         stacks->action++;
     }
 }

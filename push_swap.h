@@ -38,19 +38,19 @@ char    *ft_strchr(const char *s, int c);
 char	**ft_split(char const *s, char c);
 char	*ft_strjoin(char *s1, char *s2);
 int	    ft_strcmp(char *s1, char *s2);
-void    ft_exit_error(t_stacks *stacks, int num);
-void    ft_parsing_args(int ac, char **av, t_stacks *stacks);
-void	ft_push_swap(t_stacks *stacks);
-void	ft_swap_a_or_b(t_stacks *stacks, char *str);
-void    ft_retate_a_or_b(t_stacks *stacks, char *action);
-void    ft_reverse_retate_a_or_b(t_stacks *stacks, char *action);
-void    ft_push_a_or_b(t_stacks *stacks, char *action);
-int     ft_issorted(t_stacks *stacks);
-void    ft_sort_three_numbers(t_stacks *stacks);
-int     ft_find_smallest_num(t_stacks *stacks);
-void    ft_sort_five_numbers(t_stacks *stacks);
-void	ft_sort_arr(t_stacks *stacks, int *arr);
-void    ft_sort_algo(t_stacks *stacks);
+void    exit_error(t_stacks *stacks, int num);
+void    parsing_args(int ac, char **av, t_stacks *stacks);
+void	push_swap(t_stacks *stacks);
+void	swap_a_or_b(t_stacks *stacks, char *str);
+void    retate_a_or_b(t_stacks *stacks, char *action);
+void    reverse_retate_a_or_b(t_stacks *stacks, char *action);
+void    push_a_or_b(t_stacks *stacks, char *action);
+int     issorted(t_stacks *stacks);
+void    sort_three_numbers(t_stacks *stacks);
+int     find_smallest_num(t_stacks *stacks);
+void    sort_five_numbers(t_stacks *stacks);
+void	sort_arr(t_stacks *stacks, int *arr);
+void    sort_algo(t_stacks *stacks);
 
 
 # endif

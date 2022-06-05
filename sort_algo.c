@@ -12,7 +12,7 @@
 
 #include"push_swap.h"
 
-int ft_find_largest_num(t_stacks *stacks)
+int find_largest_num(t_stacks *stacks)
 {
     int i;
     int max;
@@ -33,7 +33,7 @@ int ft_find_largest_num(t_stacks *stacks)
     return(index);
 }
 
-void    ft_transfer_stack_b(t_stacks *stacks)
+void    transfer_stack_b(t_stacks *stacks)
 {
     int large_one;
     int step;
@@ -41,31 +41,27 @@ void    ft_transfer_stack_b(t_stacks *stacks)
     step = 0;
     while (1)
     {
-        large_one = ft_find_largest_num(stacks);
-        if (large_one > stacks->stack_b.top / 2)
+        large_one = find_largest_num(stacks);
+        if (large_one >= stacks->stack_b.top / 2)
         {
-            ft_retate_a_or_b(stacks, "rb");
             step++;
+            if (large_one == stacks->stack_b.top)
+                push_a_or_b(stacks, "pa");
+            else
+                retate_a_or_b(stacks, "rb");
         }
-        if (large_one < stacks->stack_b.top / 2)
+        else if (large_one < stacks->stack_b.top / 2)
         {
-            ft_retate_a_or_b(stacks, "rrb");
-            step++;
-        }
-        if (large_one == stacks->stack_b.top)
-        {
-            ft_push_a_or_b(stacks, "pa");
+            reverse_retate_a_or_b(stacks, "rrb");
             step++;
         }
         if (stacks->stack_b.top == -1)
-        {
-            printf(" STEPS ===> %d\n", step);
             break;
-        }
     }
+    printf("Steps from b to a==> %d\n", step);
 }
     
-static int ft_under_mid_exist(t_stacks *stacks, int mid_value)
+static int position_mid(t_stacks *stacks, int mid_value)
 {
     int i;
 
@@ -73,15 +69,13 @@ static int ft_under_mid_exist(t_stacks *stacks, int mid_value)
     while(i <= stacks->stack_a.top)
     {
         if(stacks->stack_a.arr[i] < mid_value)
-        {
-            return(1);
-        }
+            return(i);
         i++;
     }
     return(0);
 }
 
-static int mid_num(t_stacks *stacks)
+static int mid_num(t_stacks *stacks, int div)
 {
     int arr[stacks->stack_a.top];
     int mid_val;
@@ -93,42 +87,42 @@ static int mid_num(t_stacks *stacks)
         arr[i] = stacks->stack_a.arr[i];
         i++;
     }
-    ft_sort_arr(stacks, arr);
-    i = (stacks->stack_a.top + 1) / 2;
+    sort_arr(stacks, arr);
+    i = (stacks->stack_a.top + 1) / div;
     mid_val = arr[i];
     return (mid_val);
 }
 
-void    ft_sort_algo(t_stacks *stacks)
+void    sort_algo(t_stacks *stacks)
 {
     int mid_value;
-    int top;
-    int i;
 
-    i = 0;
     while (1)
     {
-        mid_value = mid_num(stacks);
+        if (stacks->stack_a.top < 200)
+            mid_value = mid_num(stacks, 6);
+        else
+            mid_value = mid_num(stacks, 13);
         printf("MID VALUE====> %d\n", mid_value);
-        top = stacks->stack_a.top;
         while (1)
         {
             if (stacks->stack_a.arr[stacks->stack_a.top] < mid_value)
-                ft_push_a_or_b(stacks, "pb");
+                push_a_or_b(stacks, "pb");
             else
-                ft_retate_a_or_b(stacks, "ra");
-            if (ft_under_mid_exist(stacks, mid_value) == 0)
             {
-                printf("HERE ====\n");
-                break;
+                if (position_mid(stacks, mid_value) >= stacks->stack_a.top / 2)
+                    retate_a_or_b(stacks, "ra");
+                else
+                    reverse_retate_a_or_b(stacks, "rra");
             }
+            if (position_mid(stacks, mid_value) == 0)
+                break;
         }
-        if (stacks->stack_a.top == 1)
+        if (stacks->stack_a.top == 4)
         {
-            if (ft_issorted(stacks) == 0)
-                ft_swap_a_or_b(stacks, "sa");
-            ft_transfer_stack_b(stacks);
-            printf("HERE WE GO\n");
+            sort_five_numbers(stacks);
+            transfer_stack_b(stacks);
+            printf("Total of numbers sorted :%d\n", stacks->stack_a.top);
             break;
         }
     }

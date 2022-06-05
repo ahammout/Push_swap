@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"push_swap.h"
+#include"checker.h"
 
 void	duplicate(t_stacks *stacks)
 {
