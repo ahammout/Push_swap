@@ -12,30 +12,25 @@
 
 #include"push_swap.h"
 
-void    sort_three_numbers(t_stacks *stacks)
+void	sort_three_numbers(t_stacks *stacks)
 {
-    int *tmp;
+	int	*tmp;
 
-    tmp = stacks->stack_a.arr;
-    // 3 2 1
-    if (tmp[2] > tmp[1] && tmp[1] > tmp[0] && tmp[0] < tmp[2])
-    {
-        swap_a_or_b(stacks, "sa");
-        reverse_retate_a_or_b(stacks, "rra");
-    }
-    // 3 1 2
-    if (tmp[2] > tmp[1] && tmp[1] < tmp[0] && tmp[0] < tmp[2])
-        retate_a_or_b(stacks, "ra");
-    // 2 3 1
-    if (tmp[2] < tmp[1] && tmp[1] > tmp[0] && tmp[0] < tmp[2])
-        reverse_retate_a_or_b(stacks, "rra");
-    // 2 1 3
-    if (tmp[2] > tmp[1] && tmp[1] < tmp[0] && tmp[0] > tmp[2])
-        swap_a_or_b(stacks, "sa");
-    // 1 3 2
-    if (tmp[2] < tmp[1] && tmp[1] > tmp[0] && tmp[0] > tmp[2])
-    {
-        swap_a_or_b(stacks, "sa");
-        retate_a_or_b(stacks, "ra");
-    }
+	tmp = stacks->stack_a.arr;
+	if (tmp[2] > tmp[1] && tmp[1] > tmp[0] && tmp[0] < tmp[2])
+	{
+		swap_a_or_b(stacks, "sa");
+		reverse_retate_a_or_b(stacks, "rra");
+	}
+	if (tmp[2] > tmp[1] && tmp[1] < tmp[0] && tmp[0] < tmp[2])
+		retate_a_or_b(stacks, "ra");
+	if (tmp[2] < tmp[1] && tmp[1] > tmp[0] && tmp[0] < tmp[2])
+		reverse_retate_a_or_b(stacks, "rra");
+	if (tmp[2] > tmp[1] && tmp[1] < tmp[0] && tmp[0] > tmp[2])
+		swap_a_or_b(stacks, "sa");
+	if (tmp[2] < tmp[1] && tmp[1] > tmp[0] && tmp[0] > tmp[2])
+	{
+		swap_a_or_b(stacks, "sa");
+		retate_a_or_b(stacks, "ra");
+	}
 }

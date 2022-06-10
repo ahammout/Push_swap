@@ -12,22 +12,13 @@
 
 #include"push_swap.h"
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-    t_stacks stacks;
-    int i;
+	t_stacks	stacks;
 
-    (void) ac;
-    stacks.action = 0;
-    parsing_args(ac, av, &stacks);
-    push_swap(&stacks);
-
-    i = stacks.stack_a.top;
-    while(i >= 0)
-    {
-        printf("%d\n", stacks.stack_a.arr[i]);
-        i--;
-    }
-    printf("ALL THE ACTIONS ==> %d\n", stacks.action);
-    return(0);
+	parsing_args(ac, av, &stacks);
+	push_swap(&stacks);
+	free(stacks.stack_a.arr);
+	free(stacks.stack_b.arr);
+	return (0);
 }

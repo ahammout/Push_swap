@@ -15,15 +15,15 @@
 void	duplicate(t_stacks *stacks)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = 0;
 	while (i < stacks->stack_a.top)
 	{
 		j = i + 1;
-		while(j <= stacks->stack_a.top)
+		while (j <= stacks->stack_a.top)
 		{
-			if(stacks->stack_a.arr[i] == stacks->stack_a.arr[j])
+			if (stacks->stack_a.arr[i] == stacks->stack_a.arr[j])
 				exit_error(stacks, 1);
 			j++;
 		}
@@ -33,39 +33,39 @@ void	duplicate(t_stacks *stacks)
 
 void	to_int(char **args, t_stacks *stacks)
 {
-	int i;
-	int size;
+	int	i;
+	int	size;
 
 	i = 0;
 	size = 0;
-	while(args[size])
+	while (args[size])
 		size++;
 	stacks->stack_a.arr = malloc((size) * sizeof(int));
 	if (!stacks->stack_a.arr)
 		exit_error(stacks, 1);
-	size--;      // For NULL;
+	size--;
 	stacks->stack_a.top = size;
-	while(size >= 0)
+	while (size >= 0)
 	{
 		stacks->stack_a.arr[i] = ft_atoi(args[size]);
 		i++;
 		size--;
 	}
-	if(stacks->stack_a.top == -1)
-        exit(EXIT_FAILURE);
+	if (stacks->stack_a.top == -1)
+		exit (EXIT_FAILURE);
 }
 
 void	check_args(char **args)
 {
-	int 	i;
-	int 	j;
+	int		i;
+	int		j;
 	long	r;
 
 	i = 0;
-	while(args[i])
+	while (args[i])
 	{
 		j = 0;
-		while(args[i][j])
+		while (args[i][j])
 		{
 			if (args[i][j] == '-')
 				j++;
@@ -74,7 +74,7 @@ void	check_args(char **args)
 			j++;
 		}
 		r = ft_atoi(args[i]);
-		if(r > 2147483647 || r < -2147483648)
+		if (r > 2147483647 || r < -2147483648)
 			exit_error(NULL, 0);
 		i++;
 	}
@@ -84,35 +84,35 @@ char	**fill_args(int ac, char **av)
 {
 	char	*str;
 	char	**args;
-	int 	i;
+	int		i;
 
 	i = 1;
 	str = (char *)malloc(sizeof(char));
 	if (!str)
-		return(NULL);
-	while(i < ac)
+		return (NULL);
+	while (i < ac)
 	{
 		str = ft_strjoin(str, av[i]);
 		i++;
 	}
 	args = (char **)malloc(sizeof(char *) * i);
 	args = ft_split(str, ' ');
-	free(str);
-	return(args);
+	free (str);
+	return (args);
 }
 
-void    parsing_args(int ac, char **av, t_stacks *stacks)
+void	parsing_args(int ac, char **av, t_stacks *stacks)
 {
 	char	**args;
 
 	stacks->stack_a.top = -1;
 	args = fill_args(ac, av);
 	check_args(args);
- 	to_int(args, stacks);
+	to_int(args, stacks);
 	free(args);
 	duplicate(stacks);
 	stacks->stack_b.arr = malloc ((stacks->stack_a.top) * sizeof(int));
-    if (!stacks->stack_b.arr)
-        exit_error(stacks, 2);
-    stacks->stack_b.top = -1;
+	if (!stacks->stack_b.arr)
+		exit_error(stacks, 2);
+	stacks->stack_b.top = -1;
 }

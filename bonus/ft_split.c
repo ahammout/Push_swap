@@ -9,8 +9,6 @@
 /*   Updated: 2022/05/10 14:32:06 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 #include "checker.h"
 
 static	void	ft_free(size_t count_words, char **newtab)

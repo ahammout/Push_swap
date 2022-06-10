@@ -12,25 +12,50 @@
 
 #include"push_swap.h"
 
-void    exit_error( t_stacks *stacks, int num)
+void	sort_arr(t_stacks *stacks, int *arr)
+{
+	int	i;
+	int	j;
+	int	tmp;
+
+	i = 0;
+	j = 0;
+	while (i <= stacks->stack_a.top)
+	{
+		j = i + 1;
+		while (j <= stacks->stack_a.top)
+		{
+			if (arr[i] > arr[j])
+			{
+				tmp = arr[j];
+				arr[j] = arr[i];
+				arr[i] = tmp;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
+void	exit_error( t_stacks *stacks, int num)
 {
 	if (num == 0)
 	{
 		write(2, "Error\n", 6);
 		exit(EXIT_FAILURE);
 	}
-	if(num == 1)
+	if (num == 1)
 	{
 		free(stacks->stack_a.arr);
-    	write(2, "Error\n", 6);
-    	exit(EXIT_FAILURE);
+		write(2, "Error\n", 6);
+		exit (EXIT_FAILURE);
 	}
 	if (num == 2)
 	{
 		free(stacks->stack_a.arr);
 		free(stacks->stack_b.arr);
 		write(2, "Error\n", 6);
-		exit(EXIT_FAILURE);
+		exit (EXIT_FAILURE);
 	}
 }
 
@@ -38,29 +63,13 @@ int	ft_strcmp(char *s1, char *s2)
 {
 	while (*s1 != '\0' && *s2 != '\0' && *s1 == *s2)
 	{
-		s1 ++;
-		s2 ++;
+		s1++;
+		s2++;
 	}
 	if (*s1 == *s2)
 		return (0);
 	else
 		return (*s1 - *s2);
-}
-
-char	*ft_strchr(const char *s, int c)
-{
-	int				i;
-	unsigned char	*str;
-
-	i = 0;
-	str = (unsigned char *)s;
-	while (str[i] != (unsigned char)c)
-	{
-		if (str[i] == '\0')
-			return (0);
-		i++;
-	}
-	return ((char *) str + i);
 }
 
 long	ft_atoi(char *str)
@@ -82,29 +91,4 @@ long	ft_atoi(char *str)
 		str++;
 	}
 	return (num * sign);
-}
-
-void	sort_arr(t_stacks *stacks, int *arr)
-{
-	int i;
-	int j;
-	int tmp;
-
-	i = 0;
-	j = 0;
-	while(i <= stacks->stack_a.top)
-    {
-        j = i + 1;
-        while (j <= stacks->stack_a.top)
-        {
-            if (arr[i] > arr[j])
-            {
-                tmp = arr[j];
-                arr[j] = arr[i];
-                arr[i] = tmp;
-            }
-            j++;
-        }
-        i++;
-    }
 }

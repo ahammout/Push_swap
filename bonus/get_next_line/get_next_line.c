@@ -16,7 +16,7 @@ static char	*next_line(char **str_remainder)
 {
 	size_t	f;
 	char	*line;
-	char	*to_free; 
+	char	*to_free;
 
 	to_free = *str_remainder;
 	f = 0;
@@ -52,11 +52,11 @@ static void	ft_tofill(int fd, char *buff, char **str)
 		if ((ft_strchr(*str, '\n')))
 			break ;
 	}
-} 
+}
 
 char	*get_next_line(int fd)
 {
-	static char	*str; 
+	static char	*str;
 	char		*line;
 	char		*buff;
 
