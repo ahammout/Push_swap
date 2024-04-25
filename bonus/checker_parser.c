@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_args.c                                     :+:      :+:    :+:   */
+/*   checker_parser.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 12:11:24 by ahammout          #+#    #+#             */
-/*   Updated: 2022/05/10 15:34:41 by ahammout         ###   ########.fr       */
+/*   Updated: 2022/06/16 20:50:21 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,10 @@ void	check_args(char **args)
 	while (args[i])
 	{
 		j = 0;
+		if (args[i][j] == '-' || args[i][j] == '+')
+			j++;
 		while (args[i][j])
 		{
-			if (args[i][j] == '-')
-				j++;
 			if (!(args[i][j] >= '0' && args[i][j] <= '9'))
 				exit_error(NULL, 0);
 			j++;
@@ -77,6 +77,26 @@ void	check_args(char **args)
 		if (r > 2147483647 || r < -2147483648)
 			exit_error(NULL, 0);
 		i++;
+	}
+}
+
+void	int_check(char *str)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while (str[i])
+	{
+		if (str[i] >= '0' && str[i] <= '9')
+			j++;
+		i++;
+	}
+	if (j == 0)
+	{
+		exit_error(NULL, 0);
+		free(str);
 	}
 }
 

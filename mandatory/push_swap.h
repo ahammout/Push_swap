@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 12:12:31 by ahammout          #+#    #+#             */
-/*   Updated: 2022/05/10 19:47:08 by ahammout         ###   ########.fr       */
+/*   Updated: 2022/06/11 21:04:03 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,7 @@ int		find_smallest_num(t_stacks *stacks);
 void	sort_five_numbers(t_stacks *stacks);
 void	sort_arr(t_stacks *stacks, int *arr);
 void	sort_algo(t_stacks *stacks);
+int		find_largest_num(t_stacks *stacks);
+void	*ft_calloc(size_t count, size_t size);
 
 #endif

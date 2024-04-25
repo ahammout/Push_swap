@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ahammout <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/13 16:42:44 by ahammout          #+#    #+#              #
-#    Updated: 2022/05/13 16:42:46 by ahammout         ###   ########.fr        #
+#    Updated: 2022/06/11 22:39:52 by ahammout         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,25 +14,26 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-LIB = push_swap.h
+LIB = mandatory/push_swap.h
 
 BLIB = bonus/checker.h
 
 NAME = push_swap
 
-SRCS = 	main.c \
-		parsing_args.c \
-		utils.c \
-		ft_split.c \
-		ft_strjoin.c \
-		push_swap.c \
-		push.c \
-		swap.c \
-		retate.c \
-		reverse_retate.c \
-		sort_algo.c \
-		sort_five_nbrs.c \
-		sort_three_nbrs.c \
+SRCS = 	mandatory/main.c \
+		mandatory/parsing_args.c \
+		mandatory/utils.c \
+		mandatory/utils_2.c \
+		mandatory/ft_split.c \
+		mandatory/ft_strjoin.c \
+		mandatory/push_swap.c \
+		mandatory/push.c \
+		mandatory/swap.c \
+		mandatory/retate.c \
+		mandatory/reverse_retate.c \
+		mandatory/sort_algo.c \
+		mandatory/sort_five_nbrs.c \
+		mandatory/sort_three_nbrs.c \
 
 BSRCS = bonus/main.c \
 		bonus/checker_parser.c \
@@ -51,10 +52,13 @@ OBJS = $(SRCS:.c=.o)
 
 BOBJS = $(BSRCS:.c=.o)
 
+%.o: %.c
+	@$(CC) $(CFLAGS) -c $< -o $@ 
+
 all : $(NAME)
 
 $(NAME) : $(OBJS) $(LIB)
-	@$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 clean :
 	@rm -rf $(OBJS)

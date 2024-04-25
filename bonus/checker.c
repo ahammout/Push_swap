@@ -50,6 +50,8 @@ void	check_exec_instr(t_stacks *stacks, char *instr)
 		reverse_retate_a_or_b(stacks, "rrb");
 	else if (ft_strcmp(instr, "rrr\n") == 0)
 		reverse_retate_a_or_b(stacks, "rrr");
+	else
+		exit_error(stacks, 2);
 }
 
 void	checker(t_stacks *stacks)
