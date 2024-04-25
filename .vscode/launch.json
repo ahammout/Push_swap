@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/goinfre/ahammout/Push_swap",
-      "program": "/goinfre/ahammout/Push_swap/build/Debug/outDebug"
+      "cwd": "/goinfre/ahammout/Push_swap/mandatory",
+      "program": "/goinfre/ahammout/Push_swap/mandatory/build/Debug/outDebug"
     }
   ]
 }
